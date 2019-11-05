@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="gson-2.8.7-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/git/gson/gson/target/gson-2.8.7-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
