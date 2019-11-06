@@ -1,12 +1,8 @@
 import com.google.gson.*;
-import com.google.gson.stream.JsonReader;
-
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 public class MessageReader {
 
@@ -18,7 +14,7 @@ public class MessageReader {
             return;
         }
         try {
-            rawInput = getData(args[0]);
+            rawInput = new Scanner(new File(args[0])).useDelimiter("\\Z").next();
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
             return;
@@ -27,14 +23,10 @@ public class MessageReader {
         JsonObject fullTree = (JsonObject)JsonParser.parseString(rawInput);
         Members names = new Members((JsonArray) fullTree.get("participants"));
         Messages allMessages = new Messages((JsonArray) fullTree.get("messages"));
+
+        System.out.println(allMessages.mostReacts());
         allMessages.findMemberCounts(names);
+
     }
 
-
-
-    private static String getData(String file) throws FileNotFoundException{
-        String content;
-        content = new Scanner(new File(file)).useDelimiter("\\Z").next();
-        return content;
-    }
 }
